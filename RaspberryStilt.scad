@@ -19,7 +19,10 @@ module pin() {
     translate([0,0,cornerRadius]) {
         rotate_extrude(convexity = 6) translate([baseDiameter/2.25, 0, 0])   circle(r = cornerRadius);
     }
-
+    
+    translate([0,0,0]) {
+        cylinder(h = 3, r = 8.5);
+    }
 }
 
 pin();
