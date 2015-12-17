@@ -4,7 +4,7 @@ module pin() {
     difference() {
         cylinder(h=35, r=(pegDia/2), $fn=20);
         translate([0,1,33]) rotate([90,0,0]) {
-            cylinder(5, 1, $fn=10, center=true);
+            cylinder(5, .75, $fn=10, center=true);
         }
     }
     translate([0,0,29]) {
