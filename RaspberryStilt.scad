@@ -1,18 +1,25 @@
-pegDia = 2.75; 
-
-module rcylinder(r1=10,r2=10,h=10,b=2)
-{translate([0,0,-h/2]) hull(){rotate_extrude() translate([r1-b,b,0]) circle(r = b); rotate_extrude() translate([r2-b, h-b, 0]) circle(r = b);}}
+pegDia = 2.75;
+baseHeight = 10;
+baseDiameter = 18;
+pegHeight = 4;
+padHeight = 4;
+padDiameter = 6.2;
+cornerRadius = 1.5;
+$fn = 100;
 
 module pin() {
-    
-    cylinder(h=25, r=(pegDia/2), $fn=20);
-    
-    translate([0,0,20]) {
-        cylinder(h=1,r=3.1,1,$fn=20);
+    // Cone and stopper cylinder
+    translate([0,0,cornerRadius * 1.75]) {
+        cylinder(h=pegHeight + baseHeight + padHeight, r=(pegDia/2));
+        cylinder(baseHeight + padHeight, padDiameter/2, padDiameter/2);
+        cylinder(baseHeight, baseDiameter/2, pegDia/2);
     }
-     
-    translate([0,0,4.5]) rcylinder(r1=2,h=-5,b=1,$fn=30);    
     
+    // Bottom donut
+    translate([0,0,cornerRadius]) {
+        rotate_extrude(convexity = 6) translate([baseDiameter/2.25, 0, 0])   circle(r = cornerRadius);
+    }
+
 }
 
 pin();
