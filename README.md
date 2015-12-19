@@ -1,2 +1,2 @@
-# RaspberryStilt
-A model of a stilt for the Raspberry Pi for 3D printing
+# Pi-lon
+A model of a pylon to elevate a naked Raspberry Pi for 3D printing
